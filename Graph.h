@@ -38,20 +38,22 @@ class Graph {
     int total_nodes;
     std::vector<node> nodes;
     std::priority_queue<node*, std::vector<node*>, min_comparator> fringe;
-public:
-    Graph (int n);
-    void add_edge(int n, int to_node, double weight);
+private:
     void add_node_to_fringe(node * n);
     void empty_fringe();
     node * get_node_from_fringe();
     bool fringe_has_nodes();
-    std::forward_list<int> * astar(int start_node, int end_node);
     void update_vertex(node * s, node * t, node * goal, edge e);
     std::forward_list<int> * build_path(node * start_node, node * end_node);
     void remove_all_nodes_from_closed();
-    void set_coordinates(int s_id, int x, int y);
     double heuristic_cost(int s_id, int t_id);
     void print_fringe();
+public:
+    Graph (int n);
+    void add_edge(int n, int to_node, double weight);
+    void set_coordinates(int s_id, int x, int y);
+
+    std::forward_list<int> * astar(int start_node, int end_node);
     void print_graph();
     void print_graph_with_weights();
 
